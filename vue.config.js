@@ -12,7 +12,7 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
-  assetsDir: 'assets',
+  assetsDir: 'static',
   parallel: false,
   filenameHashing: false,
   publicPath: './',
