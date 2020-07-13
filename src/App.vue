@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" :src="`${url}/static/img/logo.png`" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
+    <button @click="handleClick">{{count}}</button>
   </div>
 </template>
 
@@ -16,10 +17,18 @@ export default {
   computed: {
     url() {
       return this.$store.state.url;
+    },
+    count(){
+      return this.$store.state.count
     }
   },
   created() {
     console.log(this);
+  },
+  methods: {
+    handleClick(){
+      this.$store.commit('updateState', {count: 5})
+    }
   }
 };
 </script>

@@ -6,8 +6,16 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    url: 'https://79percent.github.io/micro-app2'
+    url: 'https://79percent.github.io/micro-app2',
+    count: 0,
   },
+  mutations: {
+    updateState(state, payload) {
+      const { url, count } = payload;
+      url && (state.url = url);
+      count && (state.count = count);
+    }
+  }
 })
 
 Vue.config.productionTip = false;
