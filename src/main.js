@@ -4,16 +4,48 @@ import App from "./App.vue";
 
 Vue.use(Vuex);
 
+// const moduleA = {
+//   state: () => ({ count: 0, }),
+//   mutations: { 
+//     updateState(state, payload) {
+//       const { count } = payload;
+//       count && (state.count = count);
+//     }
+//    },
+//   getters: { 
+//     count: ({count}) => (count), 
+//   }
+// }
+
+const moduleB = {
+  namespaced: true,
+  state: () => ({ count: 10, }),
+  mutations: { 
+    updateState(state, payload) {
+      const { count } = payload;
+      count && (state.count = count);
+    }
+   },
+  getters: { 
+    count: ({count}) => (count), 
+  }
+}
+
 const store = new Vuex.Store({
+  modules: {
+    // a:  moduleA,
+    b:  moduleB
+  },
   state: {
     url: 'https://79percent.github.io/micro-app2',
-    count: 0,
+  },
+  getters: {
+    url: ({url}) => (url),
   },
   mutations: {
     updateState(state, payload) {
-      const { url, count } = payload;
+      const { url } = payload;
       url && (state.url = url);
-      count && (state.count = count);
     }
   }
 })
